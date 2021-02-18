@@ -24,11 +24,6 @@ variable "cluster_description" {
 variable "cluster_version" {
   type    = string
   default = "1.20.2"
-
-  validation {
-    condition     = can(regex("[:digit:].[:digit:].[:digit:]", var.cluster_version))
-    error_message = "The value must look like that 1.20.2."
-  }
 }
 
 variable "cluster_cni" {
