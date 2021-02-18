@@ -1,8 +1,3 @@
-variable "region" {
-  type = string
-  default = "fr-par"
-}
-
 // Global variables
 variable "tags" {
   type        = list(string)
