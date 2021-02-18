@@ -9,4 +9,17 @@ locals {
   feature_gates               = var.feature_gates
   admission_plugins           = var.admission_plugins
   delete_additional_resources = var.delete_additional_resources
+
+  nodepool_default = {
+    node_type          = "DEV1_M"
+    size               = 1
+    min_size           = 1
+    max_size           = 1
+    autoscaling        = false
+    autohealing        = true
+    container_runtime  = "docker"
+    placement_group_id = null
+  }
+
+  nodepools = var.nodepools
 }

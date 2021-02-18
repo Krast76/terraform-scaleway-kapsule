@@ -70,3 +70,5 @@ variable "delete_additional_resources" {
   default     = true
 
 }
+
+variable "nodepools" {}
