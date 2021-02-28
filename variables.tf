@@ -71,4 +71,14 @@ variable "delete_additional_resources" {
 
 }
 
+variable "autoscaler_config" {
+  default     = null
+  description = "Autoscaler configuration"
+}
+
+variable "auto_upgrade" {
+  default     = null
+  description = "Auto upgrade configuration"
+}
+// nodepools variable
 variable "nodepools" {}

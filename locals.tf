@@ -22,4 +22,35 @@ locals {
   }
 
   nodepools = var.nodepools
+
+  autoscaler_defaults = {
+    disable_scale_down               = false
+    scale_down_delay_after_add       = "10m"
+    scale_down_unneeded_time         = "10m"
+    estimator                        = "binpacking"
+    expander                         = "random"
+    ignore_daemonsets_utilization    = "false"
+    balance_similar_node_groups      = "false"
+    expendable_pods_priority_cutoff  = "-10"
+    scale_down_utilization_threshold = "0.5"
+    max_graceful_termination_sec     = "600"
+  }
+
+  autoscaler_config = merge(
+    local.autoscaler_defaults,
+    var.autoscaler_config
+  )
+
+  auto_upgrade_default = {
+    enable                        = false
+    maintenance_window_start_hour = null
+    mainteance_window_day         = null
+
+  }
+
+  auto_upgrade = merge(
+    local.auto_upgrade_default,
+    var.auto_upgrade
+  )
+
 }
