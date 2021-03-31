@@ -32,23 +32,6 @@ variable "cluster_cni" {
   }
 }
 
-variable "cluster_enable_dashboard" {
-  type        = bool
-  description = "Enable the default kubernetes dashboard"
-  default     = false
-}
-
-variable "cluster_ingress" {
-  type        = string
-  description = "Ingress controller that will run on the cluster \n Possible values are unknown_ingress, nginx, traefik & traefik2 "
-  default     = "none"
-
-  validation {
-    condition     = contains(["none", "unknown_ingress", "nginx", "traefik", "traefik2"], var.cluster_ingress)
-    error_message = "Should be one of this values : none, unknown_ingress, nginx, traefik, traefik2."
-  }
-}
-
 variable "cluster_tags" {
   type    = list(string)
   default = []
@@ -79,6 +62,11 @@ variable "autoscaler_config" {
 variable "auto_upgrade" {
   default     = null
   description = "Auto upgrade configuration"
+}
+
+variable "apiserver_cert_sans" {
+  default = []
+  type    = list(string)
 }
 // nodepools variable
 variable "nodepools" {}
